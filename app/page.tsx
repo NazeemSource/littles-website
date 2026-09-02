@@ -67,7 +67,6 @@ export default function Home() {
         <a className="brand" href="#top" aria-label="Little's home">
           <span className="brand-mark"><Baby size={25} aria-hidden="true" /></span>
           <span>Little&apos;s<i>.</i></span>
-          <span className="brand-kids" aria-hidden="true"><span>👦</span><span>👧</span></span>
         </a>
 
         <nav className="desktop-nav" aria-label="Main navigation">
@@ -102,7 +101,7 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-visual">
-          <Image className="hero-image" src="/littles-hero.png" alt="A smiling toddler with a teddy bear, wooden toy and soft baby clothes" fill priority sizes="100vw" />
+          <Image className="hero-image" src="/littles-hero.png" alt="A smiling baby boy and baby girl with a teddy bear, wooden toy and soft baby clothes" fill priority sizes="100vw" />
           <div className="hero-overlay" />
           <span className="hero-floater hero-plane" aria-hidden="true"><Plane size={25} /></span>
           <span className="hero-floater hero-butterfly" aria-hidden="true">🦋</span>
@@ -112,7 +111,7 @@ export default function Home() {
           <h1>Big love for<br className="desktop-break" /><em>little moments.</em></h1>
           <p>Soft essentials and playful finds for their happiest little days.</p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#new">Shop new arrivals <ArrowRight size={18} /></a>
+            <a className="button button-primary" href="#new"><Sparkles className="button-sparkle" size={17} aria-hidden="true" /> Shop new arrivals <ArrowRight className="button-arrow" size={18} aria-hidden="true" /></a>
             <a className="text-link" href="#categories">Explore all <ChevronRight size={17} /></a>
           </div>
         </div>

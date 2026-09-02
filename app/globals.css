@@ -32,9 +32,6 @@ main { width: 100%; overflow: hidden; }
 .brand i { color: var(--coral); font-style: normal; }
 .brand-mark { width: 39px; height: 39px; display: grid; place-items: center; color: var(--coral-dark); background: linear-gradient(135deg, var(--blue), var(--peach)); border-radius: 50% 50% 46% 54%; transform: rotate(-5deg); }
 .brand-mark svg { transform: rotate(5deg); }
-.brand-kids { margin-left: 1px; display: inline-flex; align-items: flex-end; gap: 1px; font-size: 18px; letter-spacing: 0; }
-.brand-kids span:first-child { animation: kid-bob 3s ease-in-out infinite; }
-.brand-kids span:last-child { animation: kid-bob 3s .45s ease-in-out infinite; }
 .desktop-nav { display: flex; align-items: center; gap: clamp(22px, 3vw, 42px); font-size: 14px; font-weight: 700; }
 .desktop-nav a { padding: 31px 0 27px; position: relative; transition: color .2s ease; }
 .desktop-nav a:hover, .desktop-nav a.active { color: var(--coral); }
@@ -63,8 +60,10 @@ h1, h2, h3, p { margin-top: 0; }
 .hero-actions { display: flex; align-items: center; gap: 25px; }
 .button { min-height: 52px; padding: 0 23px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-radius: 28px; font-size: 14px; font-weight: 900; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
 .button:hover { transform: translateY(-2px); }
-.button-primary { color: white; background: linear-gradient(135deg, #ff75b4, #ee5a9e); box-shadow: 0 10px 24px rgba(232,78,146,.28); }
+.button-primary { position: relative; color: white; background: linear-gradient(135deg, #ff75b4, #ee5a9e); box-shadow: 0 10px 24px rgba(232,78,146,.28); animation: cta-breathe 3.2s ease-in-out infinite; }
 .button-primary:hover { background: var(--coral-dark); }
+.button-sparkle { animation: cta-twinkle 2.4s ease-in-out infinite; }
+.button-arrow { animation: arrow-nudge 1.8s ease-in-out infinite; }
 .text-link { display: inline-flex; align-items: center; gap: 4px; color: var(--coral-dark); font-size: 14px; font-weight: 900; }
 
 .benefits { min-height: 106px; padding: 22px clamp(22px, 7vw, 112px); display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: center; background: linear-gradient(90deg, #ffffff, #f1f9ff 52%, #fff2f8); border-bottom: 1px solid var(--line); }
@@ -163,9 +162,17 @@ footer small { grid-column: 1 / -1; padding-top: 24px; color: #99a29e; border-to
   35% { transform: translate3d(-8px, -9px, 0) rotate(7deg); }
   70% { transform: translate3d(5px, -4px, 0) rotate(-2deg); }
 }
-@keyframes kid-bob {
-  0%, 100% { transform: translateY(0) rotate(0); }
-  50% { transform: translateY(-3px) rotate(4deg); }
+@keyframes cta-breathe {
+  0%, 100% { box-shadow: 0 10px 24px rgba(232,78,146,.26); }
+  50% { box-shadow: 0 13px 30px rgba(232,78,146,.4); }
+}
+@keyframes cta-twinkle {
+  0%, 100% { transform: scale(.9) rotate(-8deg); opacity: .8; }
+  50% { transform: scale(1.13) rotate(8deg); opacity: 1; }
+}
+@keyframes arrow-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
 }
 @keyframes category-float {
   0%, 100% { transform: translateY(0) rotate(4deg); }
@@ -206,7 +213,6 @@ footer small { grid-column: 1 / -1; padding-top: 24px; color: #99a29e; border-to
   .brand { font-size: 23px; }
   .brand-mark { width: 35px; height: 35px; }
   .brand-mark svg { width: 21px; }
-  .brand-kids { font-size: 15px; }
   .bag-button { min-width: 58px; padding: 0 8px; gap: 5px; box-shadow: none; background: transparent; }
   .mobile-nav { top: 64px; }
   .hero { min-height: auto; flex-direction: column; align-items: stretch; background: #fff2f8; }
