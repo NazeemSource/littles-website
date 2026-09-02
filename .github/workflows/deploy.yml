@@ -40,5 +40,4 @@ jobs:
           printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/littles_deploy
           chmod 600 ~/.ssh/littles_deploy
           ssh-keyscan -H 198.54.121.31 >> ~/.ssh/known_hosts
-          ssh -i ~/.ssh/littles_deploy cwebsite@198.54.121.31 'mkdir -p /home/cwebsite/public_html/littles-website'
-          rsync -az --delete -e 'ssh -i ~/.ssh/littles_deploy' out/ cwebsite@198.54.121.31:/home/cwebsite/public_html/littles-website/
+          tar -C out -czf - . | ssh -i ~/.ssh/littles_deploy cwebsite@198.54.121.31 deploy-littles-website
