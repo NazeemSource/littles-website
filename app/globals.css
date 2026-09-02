@@ -83,7 +83,11 @@ h1, h2, h3, p { margin-top: 0; }
 .category-card { min-height: 190px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; position: relative; border-radius: 28px; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease; }
 .category-card:hover { transform: translateY(-5px) rotate(-.5deg); box-shadow: var(--shadow); }
 .peach { background: var(--peach); }.blue { background: var(--blue); }.yellow { background: var(--yellow); }.mint { background: var(--mint); }
-.category-emoji { position: absolute; right: 23px; top: 20px; font-size: 60px; filter: drop-shadow(0 8px 8px rgba(78,66,45,.12)); transform: rotate(6deg); }
+.category-card > div { position: relative; z-index: 2; }
+.category-emoji { position: absolute; left: 24px; bottom: 21px; font-size: 56px; line-height: 1; filter: drop-shadow(0 8px 8px rgba(78,66,45,.12)); animation: category-float 4s ease-in-out infinite; }
+.category-card:nth-child(2n) .category-emoji { animation-delay: -.8s; }
+.category-card:nth-child(3n) .category-emoji { animation-delay: -1.6s; }
+.category-card:first-child .category-emoji { transform-origin: 50% 90%; animation-name: bottle-rock; }
 .category-card h3 { margin: 0 0 4px; font-family: "Arial Rounded MT Bold", "Trebuchet MS", sans-serif; font-size: 19px; }
 .category-card p { margin: 0; color: var(--muted); font-size: 12px; }
 .round-arrow { width: 37px; height: 37px; display: grid; place-items: center; align-self: flex-end; color: white; background: rgba(32,51,47,.86); border-radius: 50%; }
@@ -163,10 +167,18 @@ footer small { grid-column: 1 / -1; padding-top: 24px; color: #99a29e; border-to
   0%, 100% { transform: translateY(0) rotate(0); }
   50% { transform: translateY(-3px) rotate(4deg); }
 }
+@keyframes category-float {
+  0%, 100% { transform: translateY(0) rotate(4deg); }
+  50% { transform: translateY(-7px) rotate(-3deg); }
+}
+@keyframes bottle-rock {
+  0%, 100% { transform: translateY(0) rotate(-7deg); }
+  50% { transform: translateY(-5px) rotate(8deg); }
+}
 @keyframes toy-drive {
-  from { left: -48px; transform: rotate(-2deg); }
-  48% { transform: rotate(2deg); }
-  to { left: calc(100% + 12px); transform: rotate(-2deg); }
+  from { left: -48px; transform: scaleX(-1) rotate(2deg); }
+  48% { transform: scaleX(-1) rotate(-2deg); }
+  to { left: calc(100% + 12px); transform: scaleX(-1) rotate(2deg); }
 }
 
 @media (max-width: 980px) {
@@ -221,7 +233,7 @@ footer small { grid-column: 1 / -1; padding-top: 24px; color: #99a29e; border-to
   .section-heading h2 { font-size: 39px; }
   .category-grid { gap: 12px; }
   .category-card { min-height: 165px; padding: 17px; border-radius: 22px; }
-  .category-emoji { right: 13px; top: 14px; font-size: 47px; }
+  .category-emoji { left: 17px; bottom: 15px; font-size: 47px; }
   .category-card h3 { font-size: 16px; }
   .product-grid { gap: 28px 12px; }
   .toy-car-track { width: 92%; margin-bottom: 23px; }
