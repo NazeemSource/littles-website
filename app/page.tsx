@@ -27,10 +27,10 @@ const categories = [
 ];
 
 const products = [
-  { name: "Snuggle Bear Romper", category: "Clothing", price: "$28.00", oldPrice: "$35.00", rating: "4.9", emoji: "🧸", tone: "mint", badge: "Bestseller" },
-  { name: "Rainbow Stacker", category: "Playtime", price: "$22.00", oldPrice: "", rating: "4.8", emoji: "🌈", tone: "yellow", badge: "New" },
-  { name: "Little Cloud Set", category: "Newborn", price: "$34.00", oldPrice: "$42.00", rating: "5.0", emoji: "☁️", tone: "blue", badge: "20% off" },
-  { name: "Bunny Bath Bundle", category: "Bath & Care", price: "$26.00", oldPrice: "", rating: "4.9", emoji: "🐰", tone: "peach", badge: "Loved" },
+  { name: "Snuggle Bear Romper", category: "Clothing", price: "28.00", oldPrice: "35.00", rating: "4.9", emoji: "🧸", tone: "mint", badge: "Bestseller" },
+  { name: "Rainbow Stacker", category: "Playtime", price: "22.00", oldPrice: "", rating: "4.8", emoji: "🌈", tone: "yellow", badge: "New" },
+  { name: "Little Cloud Set", category: "Newborn", price: "34.00", oldPrice: "42.00", rating: "5.0", emoji: "☁️", tone: "blue", badge: "20% off" },
+  { name: "Bunny Bath Bundle", category: "Bath & Care", price: "26.00", oldPrice: "", rating: "4.9", emoji: "🐰", tone: "peach", badge: "Loved" },
 ];
 
 export default function Home() {
@@ -100,23 +100,19 @@ export default function Home() {
         <div className="hero-copy">
           <span className="eyebrow"><span>New</span> Cozy days collection</span>
           <h1>Big love for<br /><em>little moments.</em></h1>
-          <p>Thoughtful baby essentials, playful finds, and cuddly comforts—chosen for your little one&apos;s happiest days.</p>
+          <p>Soft essentials and playful finds for their happiest little days.</p>
           <div className="hero-actions">
             <a className="button button-primary" href="#new">Shop new arrivals <ArrowRight size={18} /></a>
             <a className="text-link" href="#categories">Explore all <ChevronRight size={17} /></a>
-          </div>
-          <div className="happy-parents">
-            <div className="avatar-stack" aria-hidden="true"><span>👩🏽</span><span>👨🏻</span><span>👩🏼</span></div>
-            <div><b>10,000+ happy parents</b><span><Star size={13} fill="currentColor" /> 4.9 loved worldwide</span></div>
           </div>
         </div>
       </section>
 
       <section className="benefits" aria-label="Shopping benefits">
-        <div><span><Truck /></span><p><b>Free shipping</b><small>On orders over $60</small></p></div>
-        <div><span><ShieldCheck /></span><p><b>Baby-safe picks</b><small>Carefully selected</small></p></div>
-        <div><span><PackageCheck /></span><p><b>Easy returns</b><small>30 days, no worries</small></p></div>
-        <div><span><Gift /></span><p><b>Wrapped with love</b><small>Gift notes included</small></p></div>
+        <div><span><Truck /></span><p><b>Free shipping</b></p></div>
+        <div><span><ShieldCheck /></span><p><b>Baby-safe picks</b></p></div>
+        <div><span><PackageCheck /></span><p><b>Easy returns</b></p></div>
+        <div><span><Gift /></span><p><b>Wrapped with love</b></p></div>
       </section>
 
       <section className="section categories-section" id="categories">
@@ -137,7 +133,7 @@ export default function Home() {
 
       <section className="section products-section" id="new">
         <div className="section-heading centered">
-          <div><span className="kicker">Just landed</span><h2>Small things, big smiles</h2><p>Fresh favorites made for cuddles, play, and everyday magic.</p></div>
+          <div><span className="kicker">Just landed</span><h2>Small things, big smiles</h2></div>
         </div>
         <div className="product-grid">
           {products.map((product) => (
@@ -164,14 +160,14 @@ export default function Home() {
         <div className="story-copy">
           <span className="kicker">Our tiny promise</span>
           <h2>Picked by parents,<br />loved by little ones.</h2>
-          <p>We started Little&apos;s with one simple wish: to make finding safe, beautiful baby essentials feel joyful and easy. Every piece is selected for softness, usefulness, and a little extra magic.</p>
+          <p>Safe, soft, beautiful essentials—picked to make everyday parenting feel a little lighter.</p>
           <div className="story-points"><span><ShieldCheck size={19} /> Safe materials</span><span><Heart size={19} /> Parent approved</span></div>
           <a className="text-link dark" href="#top">Meet the Little&apos;s family <ArrowRight size={17} /></a>
         </div>
       </section>
 
       <section className="newsletter">
-        <div><span className="kicker">A little note for you</span><h2>Sweet updates, tiny prices.</h2><p>Join our family for new drops, helpful tips, and 10% off your first order.</p></div>
+        <div><span className="kicker">A little note for you</span><h2>Sweet updates, tiny prices.</h2></div>
         <form onSubmit={subscribe}>
           <label className="sr-only" htmlFor="email">Email address</label>
           <input id="email" type="email" required placeholder="Your email address" />

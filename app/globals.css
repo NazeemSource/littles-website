@@ -17,7 +17,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; overflow-x: clip; }
-body { margin: 0; color: var(--ink); background: var(--cream); font-family: "Trebuchet MS", "Avenir Next", Arial, sans-serif; overflow-x: clip; }
+body { margin: 0; color: var(--ink); background: var(--cream); font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", sans-serif; overflow-x: clip; }
 a { color: inherit; text-decoration: none; }
 button, input { font: inherit; }
 button { color: inherit; }
@@ -28,7 +28,7 @@ main { width: 100%; overflow: hidden; }
 .announcement span { display: inline-flex; align-items: center; gap: 7px; }
 .announcement-detail { color: #d8e6e0; }
 .site-header { height: 82px; padding: 0 clamp(20px, 5vw, 76px); display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 20; background: rgba(255,250,242,.96); border-bottom: 1px solid rgba(233,228,218,.8); }
-.brand { display: flex; align-items: center; gap: 9px; font-size: 26px; line-height: 1; font-weight: 900; letter-spacing: -1.2px; }
+.brand { display: flex; align-items: center; gap: 9px; font-family: "Arial Rounded MT Bold", "Trebuchet MS", sans-serif; font-size: 26px; line-height: 1; font-weight: 900; letter-spacing: -1.2px; }
 .brand i { color: var(--coral); font-style: normal; }
 .brand-mark { width: 39px; height: 39px; display: grid; place-items: center; color: var(--coral); background: var(--yellow); border-radius: 50% 50% 46% 54%; transform: rotate(-5deg); }
 .brand-mark svg { transform: rotate(5deg); }
@@ -51,7 +51,7 @@ main { width: 100%; overflow: hidden; }
 .eyebrow, .kicker { display: inline-flex; align-items: center; gap: 9px; color: var(--coral-dark); font-size: 12px; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
 .eyebrow span { padding: 5px 9px; border-radius: 20px; color: var(--ink); background: var(--yellow); font-size: 10px; }
 h1, h2, h3, p { margin-top: 0; }
-.hero h1 { margin: 21px 0 18px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(52px, 6.3vw, 92px); line-height: .91; letter-spacing: -.065em; font-weight: 700; }
+.hero h1 { margin: 21px 0 18px; font-family: "Arial Rounded MT Bold", "Trebuchet MS", sans-serif; font-size: clamp(52px, 6.3vw, 92px); line-height: .91; letter-spacing: -.065em; font-weight: 900; }
 .hero h1 em { color: var(--coral); font-weight: 700; }
 .hero-copy > p { max-width: 510px; margin-bottom: 27px; color: var(--muted); font-size: clamp(16px, 1.4vw, 19px); line-height: 1.65; }
 .hero-actions { display: flex; align-items: center; gap: 25px; }
@@ -60,12 +60,6 @@ h1, h2, h3, p { margin-top: 0; }
 .button-primary { color: white; background: var(--coral); box-shadow: 0 10px 24px rgba(242,111,91,.27); }
 .button-primary:hover { background: var(--coral-dark); }
 .text-link { display: inline-flex; align-items: center; gap: 4px; color: var(--coral-dark); font-size: 14px; font-weight: 900; }
-.happy-parents { margin-top: 38px; display: flex; align-items: center; gap: 12px; }
-.happy-parents > div:last-child { display: flex; flex-direction: column; gap: 3px; font-size: 12px; }
-.happy-parents span { display: flex; gap: 4px; align-items: center; color: var(--muted); }
-.happy-parents svg { color: #f3b82c; }
-.avatar-stack { display: flex; padding-left: 10px; }
-.avatar-stack span { width: 34px; height: 34px; margin-left: -10px; display: grid; place-items: center; border: 3px solid var(--cream); background: var(--peach); border-radius: 50%; font-size: 18px; }
 
 .benefits { min-height: 106px; padding: 22px clamp(22px, 7vw, 112px); display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: center; background: white; border-bottom: 1px solid var(--line); }
 .benefits > div { display: flex; align-items: center; justify-content: center; gap: 13px; }
@@ -75,16 +69,16 @@ h1, h2, h3, p { margin-top: 0; }
 .benefits p { margin: 0; display: flex; flex-direction: column; font-size: 13px; }
 .benefits small { margin-top: 3px; color: var(--muted); font-size: 11px; }
 
-.section { max-width: 1300px; margin: 0 auto; padding: 96px clamp(22px, 5vw, 64px); }
+.section { max-width: 1300px; margin: 0 auto; padding: 118px clamp(22px, 5vw, 64px); }
 .section-heading { margin-bottom: 36px; display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; }
-.section-heading h2, .story-copy h2, .newsletter h2 { margin: 9px 0 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(35px, 4vw, 54px); line-height: 1.05; letter-spacing: -.04em; }
+.section-heading h2, .story-copy h2, .newsletter h2 { margin: 9px 0 0; font-family: "Arial Rounded MT Bold", "Trebuchet MS", sans-serif; font-size: clamp(35px, 4vw, 54px); line-height: 1.05; letter-spacing: -.045em; }
 .section-heading > a { display: inline-flex; align-items: center; gap: 6px; color: var(--coral-dark); font-size: 13px; font-weight: 900; }
 .category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .category-card { min-height: 190px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; position: relative; border-radius: 28px; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease; }
 .category-card:hover { transform: translateY(-5px) rotate(-.5deg); box-shadow: var(--shadow); }
 .peach { background: var(--peach); }.blue { background: var(--blue); }.yellow { background: var(--yellow); }.mint { background: var(--mint); }
 .category-emoji { position: absolute; right: 23px; top: 20px; font-size: 60px; filter: drop-shadow(0 8px 8px rgba(78,66,45,.12)); transform: rotate(6deg); }
-.category-card h3 { margin: 0 0 4px; font-size: 19px; }
+.category-card h3 { margin: 0 0 4px; font-family: "Arial Rounded MT Bold", "Trebuchet MS", sans-serif; font-size: 19px; }
 .category-card p { margin: 0; color: var(--muted); font-size: 12px; }
 .round-arrow { width: 37px; height: 37px; display: grid; place-items: center; align-self: flex-end; color: white; background: rgba(32,51,47,.86); border-radius: 50%; }
 
@@ -105,7 +99,7 @@ h1, h2, h3, p { margin-top: 0; }
 .product-card:hover .quick-add, .quick-add:focus-visible { opacity: 1; transform: translate(-50%, 0); }
 .product-info { padding: 16px 5px; }
 .product-info > span { color: var(--coral-dark); font-size: 10px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
-.product-info h3 { margin: 6px 0 10px; font-size: 16px; }
+.product-info h3 { margin: 6px 0 10px; font-family: "Arial Rounded MT Bold", "Trebuchet MS", sans-serif; font-size: 16px; }
 .product-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .product-meta p { margin: 0; }
 .product-meta b { font-size: 15px; }
@@ -184,7 +178,6 @@ footer small { grid-column: 1 / -1; padding-top: 24px; color: #99a29e; border-to
   .hero-copy > p { margin: 18px auto 23px; max-width: 480px; font-size: 15px; line-height: 1.55; }
   .hero-actions { justify-content: center; flex-direction: column; gap: 15px; }
   .button-primary { width: min(100%, 310px); }
-  .happy-parents { display: none; }
   .benefits { padding: 24px 18px; gap: 22px 4px; }
   .benefits > div { justify-content: flex-start; gap: 8px; }
   .benefits > div:nth-child(even) { padding-left: 15px; }

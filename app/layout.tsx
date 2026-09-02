@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://littles.example"),
+  metadataBase: new URL("https://littlesclothing.com"),
   title: { default: "Little's | Big Love for Little Moments", template: "%s | Little's" },
   description: "Discover thoughtful baby essentials, soft clothing, playful toys, and gentle care picks at Little's—made for happy little days.",
   keywords: ["baby shop", "baby clothing", "newborn essentials", "baby toys", "baby gifts", "Little's"],

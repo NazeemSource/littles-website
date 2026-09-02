@@ -1,0 +1,44 @@
+name: Deploy Little's Website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: littles-website-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.19.0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install and build
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm build
+
+      - name: Deploy isolated static site
+        env:
+          DEPLOY_KEY: ${{ secrets.SSH_PRIVATE_KEY_LITTLES_WEBSITE }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/littles_deploy
+          chmod 600 ~/.ssh/littles_deploy
+          ssh-keyscan -H 198.54.121.31 >> ~/.ssh/known_hosts
+          ssh -i ~/.ssh/littles_deploy cwebsite@198.54.121.31 'mkdir -p /home/cwebsite/public_html/littles-website'
+          rsync -az --delete -e 'ssh -i ~/.ssh/littles_deploy' out/ cwebsite@198.54.121.31:/home/cwebsite/public_html/littles-website/
