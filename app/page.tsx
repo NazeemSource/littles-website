@@ -1,0 +1,192 @@
+"use client";
+
+import Image from "next/image";
+import {
+  ArrowRight,
+  Baby,
+  ChevronRight,
+  Gift,
+  Heart,
+  Menu,
+  PackageCheck,
+  Search,
+  ShieldCheck,
+  ShoppingBag,
+  Sparkles,
+  Star,
+  Truck,
+  X,
+} from "lucide-react";
+import { FormEvent, useState } from "react";
+
+const categories = [
+  { name: "Newborn", note: "Tiny essentials", emoji: "🍼", tone: "peach" },
+  { name: "Clothing", note: "Soft everyday fits", emoji: "🧸", tone: "blue" },
+  { name: "Playtime", note: "Learn & giggle", emoji: "🪁", tone: "yellow" },
+  { name: "Bath & Care", note: "Gentle routines", emoji: "🛁", tone: "mint" },
+];
+
+const products = [
+  { name: "Snuggle Bear Romper", category: "Clothing", price: "$28.00", oldPrice: "$35.00", rating: "4.9", emoji: "🧸", tone: "mint", badge: "Bestseller" },
+  { name: "Rainbow Stacker", category: "Playtime", price: "$22.00", oldPrice: "", rating: "4.8", emoji: "🌈", tone: "yellow", badge: "New" },
+  { name: "Little Cloud Set", category: "Newborn", price: "$34.00", oldPrice: "$42.00", rating: "5.0", emoji: "☁️", tone: "blue", badge: "20% off" },
+  { name: "Bunny Bath Bundle", category: "Bath & Care", price: "$26.00", oldPrice: "", rating: "4.9", emoji: "🐰", tone: "peach", badge: "Loved" },
+];
+
+export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
+  const [notice, setNotice] = useState("");
+
+  function addToBag(item: string) {
+    setCartCount((count) => count + 1);
+    setNotice(`${item} added to your little bag!`);
+    window.setTimeout(() => setNotice(""), 2400);
+  }
+
+  function subscribe(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setNotice("Welcome to the Little's family!");
+    event.currentTarget.reset();
+    window.setTimeout(() => setNotice(""), 2400);
+  }
+
+  return (
+    <main>
+      <div className="announcement">
+        <span><Sparkles size={15} aria-hidden="true" /> A little joy in every parcel</span>
+        <span className="announcement-detail">Free delivery on orders over $60</span>
+      </div>
+
+      <header className="site-header">
+        <a className="brand" href="#top" aria-label="Little's home">
+          <span className="brand-mark"><Baby size={25} aria-hidden="true" /></span>
+          <span>Little&apos;s<i>.</i></span>
+        </a>
+
+        <nav className="desktop-nav" aria-label="Main navigation">
+          <a className="active" href="#top">Home</a>
+          <a href="#categories">Shop</a>
+          <a href="#new">New arrivals</a>
+          <a href="#about">Our story</a>
+        </nav>
+
+        <div className="header-actions">
+          <button className="icon-button desktop-only" aria-label="Search"><Search size={20} /></button>
+          <button className="icon-button desktop-only" aria-label="Favorites"><Heart size={20} /></button>
+          <button className="bag-button" aria-label={`Shopping bag with ${cartCount} items`}>
+            <ShoppingBag size={20} />
+            <span className="bag-label">Bag</span>
+            <b>{cartCount}</b>
+          </button>
+          <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Toggle navigation">
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+
+        {menuOpen && (
+          <nav className="mobile-nav" aria-label="Mobile navigation">
+            <a href="#top" onClick={() => setMenuOpen(false)}>Home</a>
+            <a href="#categories" onClick={() => setMenuOpen(false)}>Shop</a>
+            <a href="#new" onClick={() => setMenuOpen(false)}>New arrivals</a>
+            <a href="#about" onClick={() => setMenuOpen(false)}>Our story</a>
+          </nav>
+        )}
+      </header>
+
+      <section className="hero" id="top">
+        <Image className="hero-image" src="/littles-hero.png" alt="A smiling toddler with a teddy bear, wooden toy and soft baby clothes" fill priority sizes="100vw" />
+        <div className="hero-overlay" />
+        <div className="hero-copy">
+          <span className="eyebrow"><span>New</span> Cozy days collection</span>
+          <h1>Big love for<br /><em>little moments.</em></h1>
+          <p>Thoughtful baby essentials, playful finds, and cuddly comforts—chosen for your little one&apos;s happiest days.</p>
+          <div className="hero-actions">
+            <a className="button button-primary" href="#new">Shop new arrivals <ArrowRight size={18} /></a>
+            <a className="text-link" href="#categories">Explore all <ChevronRight size={17} /></a>
+          </div>
+          <div className="happy-parents">
+            <div className="avatar-stack" aria-hidden="true"><span>👩🏽</span><span>👨🏻</span><span>👩🏼</span></div>
+            <div><b>10,000+ happy parents</b><span><Star size={13} fill="currentColor" /> 4.9 loved worldwide</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="benefits" aria-label="Shopping benefits">
+        <div><span><Truck /></span><p><b>Free shipping</b><small>On orders over $60</small></p></div>
+        <div><span><ShieldCheck /></span><p><b>Baby-safe picks</b><small>Carefully selected</small></p></div>
+        <div><span><PackageCheck /></span><p><b>Easy returns</b><small>30 days, no worries</small></p></div>
+        <div><span><Gift /></span><p><b>Wrapped with love</b><small>Gift notes included</small></p></div>
+      </section>
+
+      <section className="section categories-section" id="categories">
+        <div className="section-heading">
+          <div><span className="kicker">Find their favorites</span><h2>Shop by little need</h2></div>
+          <a href="#new">View all categories <ArrowRight size={17} /></a>
+        </div>
+        <div className="category-grid">
+          {categories.map((category) => (
+            <a className={`category-card ${category.tone}`} href="#new" key={category.name}>
+              <span className="category-emoji" aria-hidden="true">{category.emoji}</span>
+              <div><h3>{category.name}</h3><p>{category.note}</p></div>
+              <span className="round-arrow"><ArrowRight size={18} /></span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="section products-section" id="new">
+        <div className="section-heading centered">
+          <div><span className="kicker">Just landed</span><h2>Small things, big smiles</h2><p>Fresh favorites made for cuddles, play, and everyday magic.</p></div>
+        </div>
+        <div className="product-grid">
+          {products.map((product) => (
+            <article className="product-card" key={product.name}>
+              <div className={`product-image ${product.tone}`}>
+                <span className="product-badge">{product.badge}</span>
+                <button className="heart-button" aria-label={`Save ${product.name}`}><Heart size={18} /></button>
+                <span className="product-emoji" role="img" aria-label={product.category}>{product.emoji}</span>
+                <button className="quick-add" onClick={() => addToBag(product.name)}>Quick add <ShoppingBag size={17} /></button>
+              </div>
+              <div className="product-info">
+                <span>{product.category}</span>
+                <h3>{product.name}</h3>
+                <div className="product-meta"><p><b>{product.price}</b>{product.oldPrice && <del>{product.oldPrice}</del>}</p><p className="rating"><Star size={14} fill="currentColor" /> {product.rating}</p></div>
+              </div>
+            </article>
+          ))}
+        </div>
+        <a className="button button-outline" href="#categories">See all little finds <ArrowRight size={18} /></a>
+      </section>
+
+      <section className="story-section" id="about">
+        <div className="story-art" aria-hidden="true"><span className="sun">☀️</span><span className="rainbow">🌈</span><span className="bear">🧸</span><span className="cloud one">☁️</span><span className="cloud two">☁️</span></div>
+        <div className="story-copy">
+          <span className="kicker">Our tiny promise</span>
+          <h2>Picked by parents,<br />loved by little ones.</h2>
+          <p>We started Little&apos;s with one simple wish: to make finding safe, beautiful baby essentials feel joyful and easy. Every piece is selected for softness, usefulness, and a little extra magic.</p>
+          <div className="story-points"><span><ShieldCheck size={19} /> Safe materials</span><span><Heart size={19} /> Parent approved</span></div>
+          <a className="text-link dark" href="#top">Meet the Little&apos;s family <ArrowRight size={17} /></a>
+        </div>
+      </section>
+
+      <section className="newsletter">
+        <div><span className="kicker">A little note for you</span><h2>Sweet updates, tiny prices.</h2><p>Join our family for new drops, helpful tips, and 10% off your first order.</p></div>
+        <form onSubmit={subscribe}>
+          <label className="sr-only" htmlFor="email">Email address</label>
+          <input id="email" type="email" required placeholder="Your email address" />
+          <button type="submit">Join the family <ArrowRight size={18} /></button>
+        </form>
+      </section>
+
+      <footer>
+        <a className="brand footer-brand" href="#top"><span className="brand-mark"><Baby size={23} /></span><span>Little&apos;s<i>.</i></span></a>
+        <p>Made for little people and their very big adventures.</p>
+        <div className="footer-links"><a href="#categories">Shop</a><a href="#about">Our story</a><a href="#top">Delivery</a><a href="#top">Contact</a></div>
+        <small>© 2026 Little&apos;s. Frontend showcase.</small>
+      </footer>
+
+      {notice && <div className="toast" role="status"><Sparkles size={17} /> {notice}</div>}
+    </main>
+  );
+}
