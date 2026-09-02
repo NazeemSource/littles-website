@@ -55,7 +55,7 @@ export default function Home() {
     <main>
       <div className="announcement">
         <span><Sparkles size={15} aria-hidden="true" /> A little joy in every parcel</span>
-        <span className="announcement-detail">Free delivery on orders over $60</span>
+        <span className="announcement-detail">Free delivery on orders over 60</span>
       </div>
 
       <header className="site-header">
