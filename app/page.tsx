@@ -9,6 +9,7 @@ import {
   Heart,
   Menu,
   PackageCheck,
+  Plane,
   Search,
   ShieldCheck,
   ShoppingBag,
@@ -95,11 +96,15 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
-        <Image className="hero-image" src="/littles-hero.png" alt="A smiling toddler with a teddy bear, wooden toy and soft baby clothes" fill priority sizes="100vw" />
-        <div className="hero-overlay" />
+        <div className="hero-visual">
+          <Image className="hero-image" src="/littles-hero.png" alt="A smiling toddler with a teddy bear, wooden toy and soft baby clothes" fill priority sizes="100vw" />
+          <div className="hero-overlay" />
+          <span className="hero-floater hero-plane" aria-hidden="true"><Plane size={25} /></span>
+          <span className="hero-floater hero-butterfly" aria-hidden="true">🦋</span>
+        </div>
         <div className="hero-copy">
           <span className="eyebrow"><span>New</span> Cozy days collection</span>
-          <h1>Big love for<br /><em>little moments.</em></h1>
+          <h1>Big love for<br className="desktop-break" /><em>little moments.</em></h1>
           <p>Soft essentials and playful finds for their happiest little days.</p>
           <div className="hero-actions">
             <a className="button button-primary" href="#new">Shop new arrivals <ArrowRight size={18} /></a>
