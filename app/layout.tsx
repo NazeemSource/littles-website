@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: "Little's | Big Love for Little Moments", description: "Beautiful little essentials for life's biggest love.", images: ["/littles-hero.png"] },
 };
 
-export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#fffaf2" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#f7fbff" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="en"><body>{children}</body></html>;
