@@ -4,13 +4,13 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://littlesclothing.com"),
   title: { default: "Little's | Big Love for Little Moments", template: "%s | Little's" },
-  description: "Discover thoughtful baby essentials, soft clothing, playful toys, and gentle care picks at Little's—made for happy little days.",
-  keywords: ["baby shop", "baby clothing", "newborn essentials", "baby toys", "baby gifts", "Little's"],
+  description: "Shop newborn essentials, baby clothing, diapers, skincare, grooming, feeding products, toys, and nursery essentials at Little's.",
+  keywords: ["baby shop", "baby clothing", "newborn essentials", "diapers and wipes", "baby skincare", "baby grooming", "feeding essentials", "baby toys", "nursery essentials", "Little's"],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     title: "Little's | Big Love for Little Moments",
-    description: "Thoughtful baby essentials, playful finds, and cuddly comforts for your little one's happiest days.",
+    description: "Baby clothing, diapering, skincare, feeding, toys, grooming, and nursery essentials for happy little days.",
     url: "/",
     siteName: "Little's",
     images: [{ url: "/littles-hero.png", width: 1536, height: 1024, alt: "Little's baby boutique collection" }],

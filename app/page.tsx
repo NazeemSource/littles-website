@@ -21,17 +21,21 @@ import {
 import { FormEvent, useState } from "react";
 
 const categories = [
-  { name: "Newborn", note: "Tiny essentials", emoji: "🍼", tone: "peach" },
-  { name: "Clothing", note: "Soft everyday fits", emoji: "🧸", tone: "blue" },
-  { name: "Playtime", note: "Learn & giggle", emoji: "🪁", tone: "yellow" },
-  { name: "Bath & Care", note: "Gentle routines", emoji: "🛁", tone: "mint" },
+  { name: "Newborn Essentials", note: "First-day basics", emoji: "🍼", tone: "peach" },
+  { name: "Baby Clothing", note: "Everyday essentials", emoji: "🧸", tone: "blue" },
+  { name: "Diapers & Wipes", note: "Changing essentials", emoji: "🧷", tone: "yellow" },
+  { name: "Bath & Skincare", note: "Gentle daily care", emoji: "🧴", tone: "mint" },
+  { name: "Baby Cologne & Grooming", note: "Fresh care", emoji: "🪮", tone: "blue" },
+  { name: "Feeding Essentials", note: "Mealtime must-haves", emoji: "🥣", tone: "peach" },
+  { name: "Toys & Learning", note: "Play and discover", emoji: "🪁", tone: "mint" },
+  { name: "Nursery & Sleep", note: "Calm, cozy spaces", emoji: "🌙", tone: "yellow" },
 ];
 
 const products = [
-  { name: "Snuggle Bear Romper", category: "Clothing", price: "28.00", oldPrice: "35.00", rating: "4.9", emoji: "🧸", tone: "mint", badge: "Bestseller" },
-  { name: "Rainbow Stacker", category: "Playtime", price: "22.00", oldPrice: "", rating: "4.8", emoji: "🌈", tone: "yellow", badge: "New" },
-  { name: "Little Cloud Set", category: "Newborn", price: "34.00", oldPrice: "42.00", rating: "5.0", emoji: "☁️", tone: "blue", badge: "20% off" },
-  { name: "Bunny Bath Bundle", category: "Bath & Care", price: "26.00", oldPrice: "", rating: "4.9", emoji: "🐰", tone: "peach", badge: "Loved" },
+  { name: "Snuggle Bear Romper", category: "Baby Clothing", price: "28.00", oldPrice: "35.00", rating: "4.9", emoji: "🧸", tone: "mint", badge: "Bestseller" },
+  { name: "Rainbow Stacker", category: "Toys & Learning", price: "22.00", oldPrice: "", rating: "4.8", emoji: "🌈", tone: "yellow", badge: "New" },
+  { name: "Little Cloud Set", category: "Newborn Essentials", price: "34.00", oldPrice: "42.00", rating: "5.0", emoji: "☁️", tone: "blue", badge: "20% off" },
+  { name: "Bunny Bath Bundle", category: "Bath & Skincare", price: "26.00", oldPrice: "", rating: "4.9", emoji: "🐰", tone: "peach", badge: "Loved" },
 ];
 
 export default function Home() {
@@ -63,6 +67,7 @@ export default function Home() {
         <a className="brand" href="#top" aria-label="Little's home">
           <span className="brand-mark"><Baby size={25} aria-hidden="true" /></span>
           <span>Little&apos;s<i>.</i></span>
+          <span className="brand-kids" aria-hidden="true"><span>👦</span><span>👧</span></span>
         </a>
 
         <nav className="desktop-nav" aria-label="Main navigation">
@@ -140,6 +145,7 @@ export default function Home() {
         <div className="section-heading centered">
           <div><span className="kicker">Just landed</span><h2>Small things, big smiles</h2></div>
         </div>
+        <div className="toy-car-track" aria-hidden="true"><span className="track-dashes" /><span className="toy-car">🚗</span></div>
         <div className="product-grid">
           {products.map((product) => (
             <article className="product-card" key={product.name}>
