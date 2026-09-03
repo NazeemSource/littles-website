@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description: "Baby clothing, diapering, skincare, feeding, toys, grooming, and nursery essentials for happy little days.",
     url: "/",
     siteName: "Little's",
-    images: [{ url: "/littles-hero.png", width: 1536, height: 1024, alt: "Little's baby boy and baby girl boutique collection" }],
+    images: [{ url: "/littles-hero.png", width: 1536, height: 1024, alt: "Little's baby shop scene with a smiling baby boy in blue and baby girl in pink" }],
   },
   twitter: { card: "summary_large_image", title: "Little's | Big Love for Little Moments", description: "Beautiful little essentials for life's biggest love.", images: ["/littles-hero.png"] },
 };

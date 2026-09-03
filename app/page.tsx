@@ -101,7 +101,7 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-visual">
-          <Image className="hero-image" src="/littles-hero.png" alt="A smiling baby boy and baby girl with a teddy bear, wooden toy and soft baby clothes" fill priority sizes="100vw" />
+          <Image className="hero-image" src="/littles-hero.png" alt="Little's baby shop scene with a smiling baby boy in blue and baby girl in pink" fill priority sizes="(max-width: 700px) 100vw, 62vw" />
           <div className="hero-overlay" />
           <span className="hero-floater hero-plane" aria-hidden="true"><Plane size={25} /></span>
           <span className="hero-floater hero-butterfly" aria-hidden="true">🦋</span>
