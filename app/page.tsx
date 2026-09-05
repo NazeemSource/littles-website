@@ -3,7 +3,6 @@
 import Image from "next/image";
 import {
   ArrowRight,
-  Baby,
   ChevronLeft,
   ChevronRight,
   Gift,
@@ -93,8 +92,7 @@ export default function Home() {
 
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Little's home">
-          <span className="brand-mark"><Baby size={25} aria-hidden="true" /></span>
-          <span>Little&apos;s<i>.</i></span>
+          <Image className="brand-logo" src="/littles-logo.jpg" alt="Little's" width={370} height={120} priority />
         </a>
 
         <nav className="desktop-nav" aria-label="Main navigation">
@@ -240,7 +238,7 @@ export default function Home() {
       </section>
 
       <footer>
-        <a className="brand footer-brand" href="#top"><span className="brand-mark"><Baby size={23} /></span><span>Little&apos;s<i>.</i></span></a>
+        <a className="brand footer-brand" href="#top" aria-label="Little's home"><Image className="brand-logo" src="/littles-logo.jpg" alt="Little's" width={370} height={120} /></a>
         <p>Made for little people and their very big adventures.</p>
         <div className="footer-links"><a href="#categories">Shop</a><a href="#about">Our story</a><a href="#top">Delivery</a><a href="#top">Contact</a></div>
         <small><span>© 2026 Little&apos;s. Frontend showcase.</span><a className="footer-credit" href="https://www.umigs.com" target="_blank" rel="noopener noreferrer">Website developed by UMIGS</a></small>
