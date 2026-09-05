@@ -4,12 +4,15 @@ import Image from "next/image";
 import {
   ArrowRight,
   Baby,
+  ChevronLeft,
   ChevronRight,
   Gift,
   Heart,
   Menu,
   PackageCheck,
+  Pause,
   Plane,
+  Play,
   Search,
   ShieldCheck,
   ShoppingBag,
@@ -18,7 +21,17 @@ import {
   Truck,
   X,
 } from "lucide-react";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
+
+const heroSlides = [
+  { src: "/hero-welcome.jpg", title: "Little's baby collection", alt: "Little's baby shop scene with a smiling baby boy in blue and baby girl in pink" },
+  { src: "/hero-clothing.jpg", title: "Baby and kids clothing", alt: "Smiling boy and girl wearing Little's blue and pink clothing in a colorful boutique" },
+  { src: "/hero-footwear.jpg", title: "Kids footwear", alt: "Smiling boy and girl presenting comfortable blue and pink children's footwear" },
+  { src: "/hero-accessories.jpg", title: "Kids accessories", alt: "Smiling boy and girl surrounded by colorful bags, sunglasses, hair accessories and jewelry" },
+  { src: "/hero-toys.jpg", title: "Toys and learning", alt: "Smiling boy and girl enjoying colorful educational toys and soft toys" },
+  { src: "/hero-feeding-diapers.jpg", title: "Feeding and diapers", alt: "Happy baby with feeding bottles, baby food, diapers and wipes" },
+  { src: "/hero-bath-care.jpg", title: "Bath and care", alt: "Happy baby at bath time with gentle skincare, towels and baby wipes" },
+];
 
 const categories = [
   { name: "Newborn Essentials", note: "First-day basics", emoji: "🍼", tone: "peach" },
@@ -42,6 +55,21 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [notice, setNotice] = useState("");
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [sliderPaused, setSliderPaused] = useState(false);
+  const swipeStart = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (sliderPaused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setInterval(() => {
+      setActiveSlide((slide) => (slide + 1) % heroSlides.length);
+    }, 5500);
+    return () => window.clearInterval(timer);
+  }, [sliderPaused]);
+
+  function changeSlide(direction: number) {
+    setActiveSlide((slide) => (slide + direction + heroSlides.length) % heroSlides.length);
+  }
 
   function addToBag(item: string) {
     setCartCount((count) => count + 1);
@@ -99,12 +127,38 @@ export default function Home() {
         )}
       </header>
 
-      <section className="hero" id="top">
-        <div className="hero-visual">
-          <Image className="hero-image" src="/littles-hero.png" alt="Little's baby shop scene with a smiling baby boy in blue and baby girl in pink" fill priority sizes="(max-width: 700px) 100vw, 62vw" />
+      <section className="hero" id="top" aria-label="Featured Little's collections">
+        <div
+          className="hero-visual"
+          onTouchStart={(event) => { swipeStart.current = event.touches[0].clientX; }}
+          onTouchEnd={(event) => {
+            if (swipeStart.current === null) return;
+            const distance = event.changedTouches[0].clientX - swipeStart.current;
+            if (Math.abs(distance) > 45) changeSlide(distance > 0 ? -1 : 1);
+            swipeStart.current = null;
+          }}
+        >
+          {heroSlides.map((slide, index) => (
+            <div className={`hero-slide ${index === activeSlide ? "is-active" : ""}`} key={slide.src} aria-hidden={index !== activeSlide}>
+              <Image className="hero-image" src={slide.src} alt={slide.alt} fill priority={index === 0} sizes="100vw" />
+            </div>
+          ))}
           <div className="hero-overlay" />
           <span className="hero-floater hero-plane" aria-hidden="true"><Plane size={25} /></span>
           <span className="hero-floater hero-butterfly" aria-hidden="true">🦋</span>
+          <div className="slider-controls" aria-label="Hero slider controls">
+            <button className="slider-arrow" type="button" onClick={() => changeSlide(-1)} aria-label="Previous slide"><ChevronLeft size={19} /></button>
+            <div className="slider-dots">
+              {heroSlides.map((slide, index) => (
+                <button className={`slider-dot ${index === activeSlide ? "is-active" : ""}`} type="button" onClick={() => setActiveSlide(index)} aria-label={`Show ${slide.title}`} aria-current={index === activeSlide ? "true" : undefined} key={slide.src} />
+              ))}
+            </div>
+            <button className="slider-pause" type="button" onClick={() => setSliderPaused((paused) => !paused)} aria-label={sliderPaused ? "Play slideshow" : "Pause slideshow"}>
+              {sliderPaused ? <Play size={16} /> : <Pause size={16} />}
+            </button>
+            <button className="slider-arrow" type="button" onClick={() => changeSlide(1)} aria-label="Next slide"><ChevronRight size={19} /></button>
+          </div>
+          <span className="sr-only" aria-live="polite">{heroSlides[activeSlide].title}</span>
         </div>
         <div className="hero-copy">
           <span className="eyebrow"><span>New</span> Cozy days collection</span>
@@ -189,7 +243,7 @@ export default function Home() {
         <a className="brand footer-brand" href="#top"><span className="brand-mark"><Baby size={23} /></span><span>Little&apos;s<i>.</i></span></a>
         <p>Made for little people and their very big adventures.</p>
         <div className="footer-links"><a href="#categories">Shop</a><a href="#about">Our story</a><a href="#top">Delivery</a><a href="#top">Contact</a></div>
-        <small>© 2026 Little&apos;s. Frontend showcase.</small>
+        <small><span>© 2026 Little&apos;s. Frontend showcase.</span><a className="footer-credit" href="https://www.umigs.com" target="_blank" rel="noopener noreferrer">Website developed by UMIGS</a></small>
       </footer>
 
       {notice && <div className="toast" role="status"><Sparkles size={17} /> {notice}</div>}
